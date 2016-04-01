@@ -172,7 +172,12 @@ gulp.task('connectDist', function (cb) {
 
 
 // *** default task *** //
-gulp.task('default', ['browser-sync', 'watch'], function(){});
+gulp.task('default', function(){
+  runSequence(
+    ['sass'],
+    ['sass:watch', 'browser-sync', 'watch']
+  );
+});
 
 
 // *** test task *** //

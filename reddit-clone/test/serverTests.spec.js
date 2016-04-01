@@ -36,10 +36,12 @@ describe('DB routes', function() {
                 res.should.be.json;
                 res.body.should.be.a('array');
                 res.body.length.should.equal(3);
+                res.body[0].should.have.property('id');
+                res.body[0].id.should.equal(1);
                 res.body[0].should.have.property('title');
-                res.body[0].name.should.equal('Aspens in Fall');
+                res.body[0].title.should.equal('Aspens in Fall');
                 res.body[0].should.have.property('author');
-                res.body[0].channel.should.equal('Dave');
+                res.body[0].author.should.equal('Dave');
                 done();
             });
         });
@@ -57,9 +59,9 @@ describe('DB routes', function() {
                 res.body.should.be.a('array');
                 res.body.length.should.equal(3);
                 res.body[0].should.have.property('comm_author');
-                res.body[0].name.should.equal('Mike');
+                res.body[0].comm_author.should.equal('Mike');
                 res.body[0].should.have.property('post_id');
-                res.body[0].channel.should.equal(1);
+                res.body[0].post_id.should.equal(1);
                 done();
             });
         });

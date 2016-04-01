@@ -2,12 +2,30 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 var knex = require('../../../db/knex');
-var passport = require('../lib/passport');
-var bcrypt = require('bcrypt');
 var helpers = require('../lib/helpers');
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.redirect('/index.html');
+});
+
+router.get('/getData/posts', function(req, res, next) {
+  return knex('posts')
+  .then(function(data) {
+    res.status(200).send(data);
+  })
+  .catch(function(err) {
+    res.status(500).send(err);
+  });
+});
+
+router.get('/getData/comments', function(req, res, next) {
+  return knex('comments')
+  .then(function(data) {
+    res.status(200).send(data);
+  })
+  .catch(function(err) {
+    res.status(500).send(err);
+  });
 });
 
 module.exports = router;

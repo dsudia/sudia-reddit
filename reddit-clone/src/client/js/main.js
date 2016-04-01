@@ -1,4 +1,4 @@
-// add scripts
+// header menu behavior
 $(document).ready(function() {
   var menuToggle = $('#js-mobile-menu').unbind();
   $('#js-navigation-menu').removeClass("show");
@@ -11,4 +11,9 @@ $(document).ready(function() {
       }
     });
   });
+});
+
+var app = angular.module('redditClone', []);
+app.controller = ('RenderPosts', function($scope) {
+
 });

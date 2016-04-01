@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='redditClone'>
   <head>
     <link rel='stylesheet' type='text/css' href='styles/css/main.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <meta charset='UTF-8'>
     <title></title>
   </head>
@@ -30,12 +31,65 @@
         <div class="navigation-tools">
           <div class="search-bar">
             <form role="search">
-              <input type="search" placeholder="Enter Search" />
+              <input id='postSearch' type="search" placeholder="Enter Search" />
             </form>
           </div>
         </div>
       </div>
     </header>
+
+    <section class='add-post-form'>
+      <form class='add-post'>
+        <label for='title'>Title</label>
+        <input type='text' name='title' placeholder='Yosemite at Sunrise'>
+        <label for='author'>Author</label>
+        <input type='text' name='author' placeholder='Dave Smith'>
+        <label for='image'>Image</label>
+        <input type='text' name='image' placeholder='enter the url of an image'>
+        <label for='description'>Description</label>
+        <input type='text' name='description' placeholder='enter a description of the image'>
+        <button>Submit Post</button>
+      </form>
+    </section>
+
+    <main ng-controller='RenderPosts'>
+      <article class='post-div' ng-repeat='post in posts'>
+        <div class='image-col'>
+          <img class='post-img' ng-src='{{image}}'>
+        </div>
+        <div class='body-col'>
+          <div class='row'>
+            <h3>{{title}}</h3>
+            <i class='fa fa-arrow-circle-up'></i>
+            <i class='fa fa-arrow-circle-down'></i>
+            {{upvote}}
+          </div>
+          <div class='row'>
+            <p>By {{author}} </p>
+          </div>
+          <div class='row'>
+            <p>{{description}}</p>
+          </div>
+          <div class='row'>
+            <i class='fa fa-calendar'></i>
+            <p class='date'>{{date}}</p>
+            <i class='fa fa-comments'></i>
+            <p class='comments'>{{comments.length}}</p>
+            <i class='fa fa-pencil'></i>
+            <p class='add-comment'>Add Comment</p>
+          </div>
+          <section class='comment-box' ng-repeat='comment in comments'>
+          <section>
+          <form class='add-comment'>
+            <label for='comm_author'>Author</label>
+            <input type='text' name='comm_author' placeholder='Dave Smith'>
+            <label for='text'>Text</label>
+            <input type='text' name='text' placeholder='comment text'>
+            <button>Add Comment</button>
+          </form>
+        </div>
+      </article>
+    </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src='js/main.js'></script>

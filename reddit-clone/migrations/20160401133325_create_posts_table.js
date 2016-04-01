@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
     table.text('description');
     table.string('image');
     table.string('author');
+    table.integer('upvote');
   });
 };
 

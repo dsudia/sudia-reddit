@@ -3,6 +3,13 @@
 @import "base/base";
 @import "base/typography";
 
+
+.add-post-form {
+  margin: 1rem 3rem;
+}
+
+
+// scss for nav header
 header.navigation {
   $base-border-color: gainsboro !default;
   $base-border-radius: 3px !default;

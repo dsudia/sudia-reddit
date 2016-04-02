@@ -19,7 +19,7 @@
         <nav role="navigation">
           <ul id="js-navigation-menu" class="navigation-menu show">
             <li class="nav-link"><a href="javascript:void(0)">reddit Clone</a></li>
-            <li class="nav-link"><a id='submitPost' href="javascript:void(0)" ng-click='hideMe = !hideMe'>+ Submit Post</a></li>
+            <li class="nav-link"><a id='submitPost' href="javascript:void(0)" ng-click='hideAndShow()'>+ Submit Post</a></li>
             <li class="nav-link more"><a href="javascript:void(0)">Sort Posts</a>
               <ul class="submenu">
                 <li><a href="javascript:void(0)">Upvotes</a></li>
@@ -39,7 +39,7 @@
       </div>
     </header>
 
-    <section ng-hide='hideMe' class='add-post-form'>
+    <section ng-hide='hideStatus' class='add-post-form'>
       <form class='add-post'>
         <label for='title'>Title</label>
         <input type='text' name='title' placeholder='Yosemite at Sunrise'>

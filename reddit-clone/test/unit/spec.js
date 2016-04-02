@@ -1,28 +1,30 @@
-describe('TestOneController', function () {
+describe('test showForm', function () {
 
   var controller = null;
   $scope = null;
 
-  beforeEach(function () {
-    module('redditClone');
-  });
+  beforeEach(module('redditClone'));
 
-  beforeEach(inject(function ($controller, $rootScope) {
-    $scope = $rootScope.$new();
-    controller = $controller('showForm', {
-      $scope: $scope
+
+  it('initially has a status of true for hidden items', inject(function ($controller) {
+    var scope = {};
+    var showForm = $controller('showForm', {
+      $scope: scope
     });
+    scope.should.have.property('hideStatus');
+    scope.hideStatus.should.equal(true);
   }));
 
-  it('initially has a status of true for hidden items', function () {
-    assert.equal($scope.hideStatus, true);
-  });
-
-  xit('clicking the button changes the status of hidden items', function () {
-    $scope.newText = "Hi!";
-    $scope.changeGreeting();
-    assert.equal($scope.greeting, "Hi!");
-  });
+  it('initially has a status of true for hidden items', inject(function ($controller) {
+    var scope = {};
+    var showForm = $controller('showForm', {
+      $scope: scope
+    });
+    scope.should.have.property('hideAndShow');
+    scope.hideAndShow.should.be.a('function');
+    scope.hideAndShow();
+    scope.hideStatus.should.equal(false);
+  }));
 
 
 });

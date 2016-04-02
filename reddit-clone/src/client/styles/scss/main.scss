@@ -3,11 +3,31 @@
 @import "base/base";
 @import "base/typography";
 
+$base-background-color: gainsboro !default;
 
 .add-post-form {
-  margin: 1rem 3rem;
+  @include outer-container;
+  .border-div {@include span-columns(1);}
+  .add-post {@include span-columns(10);
+    margin: 1rem 5rem;}
 }
 
+
+.add-post {
+  @include span-columns(10);
+}
+
+.post-div {
+  background-color: $base-background-color;
+  margin: 1rem 5rem;
+  img { display: inline-block;}
+}
+
+.row {
+  @include row;
+  h3 { display: inline-block; }
+  p { display: inline-block; }
+}
 
 // scss for nav header
 header.navigation {

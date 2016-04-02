@@ -235,7 +235,53 @@ picture {
   max-width: 100%; }
 
 .add-post-form {
-  margin: 1rem 3rem; }
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto; }
+  .add-post-form::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .add-post-form .border-div {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 6.17215%; }
+    .add-post-form .border-div:last-child {
+      margin-right: 0; }
+  .add-post-form .add-post {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 82.94039%;
+    margin: 1rem 5rem; }
+    .add-post-form .add-post:last-child {
+      margin-right: 0; }
+
+.add-post {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 82.94039%; }
+  .add-post:last-child {
+    margin-right: 0; }
+
+.post-div {
+  background-color: #fff;
+  margin: 1rem 5rem; }
+  .post-div img {
+    display: inline-block; }
+
+.row {
+  display: block; }
+  .row::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .row h3 {
+    display: inline-block; }
+  .row p {
+    display: inline-block; }
 
 header.navigation {
   background-color: #333;

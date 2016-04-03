@@ -41,5 +41,16 @@ describe('test change post score', function() {
 });
 
 describe('test displayPosts', function() {
+  var controller = null;
+  $scope = null;
 
+  beforeEach(module('redditClone'));
+  it('initially has a status of true for hidden items', inject(function ($controller) {
+    var scope = {};
+    var showForm = $controller('showPosts', {
+      $scope: scope
+    });
+    scope.should.have.property('formHideStatus');
+    scope.formHideStatus.should.equal(true);
+  }));
 });

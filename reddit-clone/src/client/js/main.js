@@ -1,16 +1,36 @@
-// Show and hide new post form
 var app = angular.module('redditClone', []);
-app.controller('showForm', function($scope) {
+
+// get posts from database
+app.factory('getPosts', function($http) {
+  console.log('fuck Angular');
+  var postClass = {};
+  postClass.get = function() {
+    return $http.get("/getData/posts");
+  };
+  return postClass;
+});
+
+// Show and hide new post form
+app.controller('showForm', function($scope, getPosts) {
   $scope.formHideStatus = true;
   $scope.hideAndShowForm = function() {
     $scope.formHideStatus = !$scope.formHideStatus;
   };
-});
 
-
-// show posts from database on the main page
-app.factory('getPosts', function() {
-  $.ajax(function() {
-    url: ''
+  getPosts.get()
+  .then(function(results) {
+    $scope.get = results.data;
   });
 });
+
+
+
+
+
+
+// app.controller('showPosts', function($scope, getPosts) {
+//   getPosts.get()
+//   .then(function(results) {
+//     $scope.get = results.data;
+//   });
+// });

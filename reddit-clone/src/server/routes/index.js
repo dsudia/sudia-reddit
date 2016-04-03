@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/getData/posts', function(req, res, next) {
+  console.log('back-end function fired');
   return knex('posts')
   .then(function(data) {
     res.status(200).send(data);

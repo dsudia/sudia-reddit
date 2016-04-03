@@ -5,7 +5,7 @@ describe('test showForm controller', function () {
   beforeEach(module('redditClone'));
   it('initially has a status of true for hidden items', inject(function ($controller) {
     var scope = {};
-    var showForm = $controller('showForm', {
+    var showForm = $controller('formControl', {
       $scope: scope
     });
     scope.should.have.property('formHideStatus');
@@ -14,7 +14,7 @@ describe('test showForm controller', function () {
 
   it('changes value of hideStatus on button click', inject(function ($controller) {
     var scope = {};
-    var showForm = $controller('showForm', {
+    var showForm = $controller('formControl', {
       $scope: scope
     });
     scope.should.have.property('hideAndShowForm');
@@ -45,12 +45,13 @@ describe('test displayPosts', function() {
   $scope = null;
 
   beforeEach(module('redditClone'));
-  it('initially has a status of true for hidden items', inject(function ($controller) {
+
+  it('should provide data for all posts to be displayed on the page', inject(function ($controller) {
     var scope = {};
-    var showForm = $controller('showPosts', {
+    var showForm = $controller('postControl', {
       $scope: scope
     });
-    scope.should.have.property('formHideStatus');
-    scope.formHideStatus.should.equal(true);
+    scope.should.have.property('posts');
+    scope.posts.should.have.type('array');
   }));
 });

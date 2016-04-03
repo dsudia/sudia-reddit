@@ -19,8 +19,6 @@ app.controller('formControl', function($scope) {
   $scope.hideAndShowForm = function() {
     $scope.formHideStatus = !$scope.formHideStatus;
   };
-
-
 });
 
 
@@ -31,14 +29,3 @@ app.controller('postControl', function($scope, dbCalls) {
     $scope.posts = results.data;
   });
 });
-
-
-
-
-
-// app.controller('showPosts', function($scope, getPosts) {
-//   getPosts.get()
-//   .then(function(results) {
-//     $scope.get = results.data;
-//   });
-// });

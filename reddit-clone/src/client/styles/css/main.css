@@ -267,10 +267,31 @@ picture {
     margin-right: 0; }
 
 .post-div {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #fff;
   margin: 1rem 5rem; }
+  .post-div::after {
+    clear: both;
+    content: "";
+    display: table; }
   .post-div img {
     display: inline-block; }
+  .post-div .image-col {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 23.23176%; }
+    .post-div .image-col:last-child {
+      margin-right: 0; }
+  .post-div .body-col {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 74.41059%; }
+    .post-div .body-col:last-child {
+      margin-right: 0; }
 
 .row {
   display: block; }
@@ -282,6 +303,11 @@ picture {
     display: inline-block; }
   .row p {
     display: inline-block; }
+
+.post-img {
+  height: 200px;
+  width: 300px;
+  display: inline-block; }
 
 header.navigation {
   background-color: #333;

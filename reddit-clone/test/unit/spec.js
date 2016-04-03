@@ -8,8 +8,8 @@ describe('test showForm controller', function () {
     var showForm = $controller('showForm', {
       $scope: scope
     });
-    scope.should.have.property('hideStatus');
-    scope.hideStatus.should.equal(true);
+    scope.should.have.property('formHideStatus');
+    scope.formHideStatus.should.equal(true);
   }));
 
   it('changes value of hideStatus on button click', inject(function ($controller) {
@@ -17,10 +17,10 @@ describe('test showForm controller', function () {
     var showForm = $controller('showForm', {
       $scope: scope
     });
-    scope.should.have.property('hideAndShow');
-    scope.hideAndShow.should.be.a('function');
-    scope.hideAndShow();
-    scope.hideStatus.should.equal(false);
+    scope.should.have.property('hideAndShowForm');
+    scope.hideAndShowForm.should.be.a('function');
+    scope.hideAndShowForm();
+    scope.formHideStatus.should.equal(false);
   }));
 });
 

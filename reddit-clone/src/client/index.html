@@ -19,7 +19,7 @@
         <nav role="navigation">
           <ul id="js-navigation-menu" class="navigation-menu show">
             <li class="nav-link"><a href="javascript:void(0)">reddit Clone</a></li>
-            <li class="nav-link"><a id='submitPost' href="javascript:void(0)" ng-click='hideAndShow()'>+ Submit Post</a></li>
+            <li class="nav-link"><a id='submitPost' href="javascript:void(0)" ng-click='hideAndShowForm()'>+ Submit Post</a></li>
             <li class="nav-link more"><a href="javascript:void(0)">Sort Posts</a>
               <ul class="submenu">
                 <li><a href="javascript:void(0)">Upvotes</a></li>
@@ -39,7 +39,7 @@
       </div>
     </header>
 
-    <section ng-hide='hideStatus' class='add-post-form'>
+    <section ng-hide='formHideStatus' class='add-post-form'>
       <form class='add-post'>
         <label for='title'>Title</label>
         <input type='text' name='title' placeholder='Yosemite at Sunrise'>
@@ -92,8 +92,10 @@
       </article>
     </main>
 
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src='js/main.js'></script>
+    <script type='text/javascript' src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.10/angular.min.js'</script>
+    <script type='text/javascript' src="bower_components/angular/angular.min.js"></script>
+    <script type='text/javascript' src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script type='text/javascript' src='js/main.js'></script>
   </body>
 </html>

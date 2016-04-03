@@ -8,7 +8,7 @@
     <title></title>
   </head>
 
-  <body ng-controller='showForm' ng-init='get()'>
+  <body ng-controller='formControl' ng-init='get()'>
 
     <header class="navigation" role="banner">
       <div class="navigation-wrapper">
@@ -53,8 +53,8 @@
       </form>
     </section>
 
-    <main>
-      <article class='post-div'  ng-repeat='post in posts'>
+    <main ng-controller='postControl'>
+      <article class='post-div' ng-repeat='post in posts'>
         <div class='image-col'>
           <img class='post-img' ng-src='{{post.image}}'>
         </div>

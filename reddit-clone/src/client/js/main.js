@@ -2,7 +2,6 @@ var app = angular.module('redditClone', []);
 
 // get posts from database
 app.factory('getPosts', function($http) {
-  console.log('fuck Angular');
   var postClass = {};
   postClass.get = function() {
     return $http.get("/getData/posts");
@@ -19,7 +18,8 @@ app.controller('showForm', function($scope, getPosts) {
 
   getPosts.get()
   .then(function(results) {
-    $scope.get = results.data;
+    $scope.posts = results.data;
+    console.log($scope.posts);
   });
 });
 

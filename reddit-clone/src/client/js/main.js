@@ -81,7 +81,6 @@ app.controller('commControl', function($scope, dbCalls) {
 app.controller('postControl', function($scope, dbCalls) {
   dbCalls.get()
   .then(function(results) {
-    console.log(results);
     $scope.posts = results.data;
   });
 

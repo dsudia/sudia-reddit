@@ -54,7 +54,7 @@
       </form>
     </section>
 
-    <main ng-controller='postControl'>
+    <main id='post-section' ng-controller='postControl'>
       <article class='post-div' ng-repeat='post in posts | orderBy: sort : reverse | filter: search : false' ng-controller='commControl'>
         <div class='image-col'>
           <img class='post-img' ng-src='{{post.image}}'>

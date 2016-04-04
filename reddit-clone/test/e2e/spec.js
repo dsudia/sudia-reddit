@@ -1,30 +1,31 @@
-// describe('TestOneController', function () {
-//
-//   var greeting = element(by.id('greeting'));
-//   var textInputBox = element(by.css('[ng-model="newText"]'));
-//   var changeGreetingButton = element(by.css('.btn-default'));
-//
-//   beforeEach(function() {
-//     browser.get('http://localhost:8888/#/one');
-//   });
-//
-//   it('initially has a greeting', function () {
-//     expect(greeting.getText()).toEqual('Hello, World!');
-//   });
-//
-//   it('clicking the button changes the greeting if text is inputed', function () {
-//     textInputBox.sendKeys('Hi!');
-//     changeGreetingButton.click();
-//     expect(greeting.getText()).toEqual('Hi!');
-//   });
-//
-//   it('clicking the button does not change the greeting if text is not inputed', function () {
-//     textInputBox.sendKeys('');
-//     changeGreetingButton.click();
-//     expect(greeting.getText()).toEqual('Hello, World!');
-//   });
-//
-// });
+describe('TestOneController', function () {
+
+  var postSection = element.all(by.css('.post-div'));
+
+  beforeEach(function() {
+    browser.get('http://localhost:3000/');
+  });
+
+  it('should show all posts', function () {
+    expect(postSection.count()).toEqual(3);
+    expect(postSection.get(0).getText()).toContain('Yosemite');
+    expect(postSection.get(1).getText()).toContain('Aspens');
+    expect(postSection.get(2).getText()).toContain('Yellowstone');
+  });
+
+  xit('clicking the button changes the greeting if text is inputed', function () {
+    textInputBox.sendKeys('Hi!');
+    changeGreetingButton.click();
+    expect(greeting.getText()).toEqual('Hi!');
+  });
+
+  xit('clicking the button does not change the greeting if text is not inputed', function () {
+    textInputBox.sendKeys('');
+    changeGreetingButton.click();
+    expect(greeting.getText()).toEqual('Hello, World!');
+  });
+
+});
 //
 // describe('TestTwoController', function () {
 //

@@ -22,9 +22,9 @@
             <li class="nav-link"><a id='submitPost' href="javascript:void(0)" ng-click='hideAndShowForm()'>+ Submit Post</a></li>
             <li class="nav-link more"><a href="javascript:void(0)">Sort Posts</a>
               <ul class="submenu">
-                <li><a href="javascript:void(0)">Upvotes</a></li>
-                <li><a href="javascript:void(0)">Date</a></li>
-                <li><a href="javascript:void(0)">Title</a></li>
+                <li><a href="javascript:void(0)" ng-click='sortUpvote()'>Upvotes</a></li>
+                <li><a href="javascript:void(0)" ng-click='sortDate()'>Date</a></li>
+                <li><a href="javascript:void(0)" ng-click='sortTitle()'>Title</a></li>
               </ul>
             </li>
           </ul>
@@ -41,7 +41,7 @@
 
     <section ng-hide='formHideStatus' class='add-post-form'>
       <form class='add-post' ng-submit='addPost()'>
-        <input ng-hide='false' id='date-picker' ng-model='formData.date' type='date' name='date'>
+        <input ng-hide='true' id='date-picker' ng-model='formData.date' type='date' name='date'>
         <label for='title'>Title</label>
         <input type='text' name='title' ng-model='formData.title' placeholder='Yosemite at Sunrise'>
         <label for='author'>Author</label>
@@ -55,7 +55,7 @@
     </section>
 
     <main ng-controller='postControl'>
-      <article class='post-div' ng-repeat='post in posts' ng-controller='commControl'>
+      <article class='post-div' ng-repeat='post in posts | orderBy: sort : reverse' ng-controller='commControl'>
         <div class='image-col'>
           <img class='post-img' ng-src='{{post.image}}'>
         </div>
@@ -81,12 +81,12 @@
             <p class='add-comment' ng-click='hideAndShowCommForm()'>Add Comment</p>
           </div>
           <section class='row'>
-            <form ng-hide='hideCommForm' class='add-comment'>
+            <form ng-hide='hideCommForm' class='add-comment' ng-submit='addComm(post)'>
               <label for='comm_author'>Author</label>
-              <input type='text' name='comm_author' placeholder='Dave Smith'>
+              <input type='text' ng-model='commData.comm_author' name='comm_author' placeholder='Dave Smith'>
               <label for='text'>Text</label>
-              <input type='text' name='text' placeholder='comment text'>
-              <button type='submit' ng-submit=''>Add Comment</button>
+              <input type='text' ng-model='commData.text' name='text' placeholder='comment text'>
+              <button type='submit'>Add Comment</button>
             </form>
           </section>
           <section ng-hide='hideComms' class='comment-box' ng-repeat='comment in post.comments'>

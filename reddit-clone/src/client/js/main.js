@@ -27,6 +27,14 @@ app.factory('dbCalls', function($http) {
     });
   };
 
+  postClass.addComment = function(data){
+    return $http({
+      url: '/addData/comments',
+      data: data,
+      method: 'POST'
+    });
+  };
+
   return postClass;
 });
 
@@ -37,6 +45,24 @@ app.controller('formControl', function($scope, dbCalls) {
   $scope.formHideStatus = true;
   $scope.hideAndShowForm = function() {
     $scope.formHideStatus = !$scope.formHideStatus;
+  };
+
+  $scope.sort = 'upvote';
+  $scope.reverse = true;
+
+  $scope.sortTitle = function() {
+    $scope.sort = 'title';
+    $scope.reverse = false;
+  };
+
+  $scope.sortUpvote = function() {
+    $scope.sort = 'upvote';
+    $scope.reverse = true;
+  };
+
+  $scope.sortDate = function() {
+    $scope.sort = 'date';
+    $scope.reverse = true;
   };
 
   $scope.formData = {};
@@ -53,7 +79,7 @@ app.controller('formControl', function($scope, dbCalls) {
     $scope.hideAndShowForm();
     dbCalls.add($scope.formData)
     .then(function(data) {
-      postClass.get()
+      return postClass.get()
       .then(function(results) {
         $scope.posts = results.data;
         $scope.formData = {};
@@ -76,7 +102,20 @@ app.controller('commControl', function($scope, dbCalls) {
     $scope.hideCommForm = true;
   };
 
-
+  $scope.commData = {};
+  $scope.addComm = function(post) {
+    $scope.commData.post_id = post.id;
+    return dbCalls.addComment($scope.commData)
+    .then(function() {
+      return dbCalls.get()
+      .then(function(results) {
+        $scope.posts = results.data;
+        $scope.commData = {};
+        $scope.hideComms = false;
+        $scope.hideCommForm = true;
+      });
+    });
+  };
 
 });
 
@@ -97,4 +136,5 @@ app.controller('postControl', function($scope, dbCalls) {
     post.upvote --;
     dbCalls.changeVote(post.id, post.upvote);
   };
+
 });

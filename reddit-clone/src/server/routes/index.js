@@ -15,13 +15,11 @@ router.get('/getData/posts', function(req, res, next) {
   })
   .then(function(postData) {
     data = postData;
-    console.log(data);
   })
   .then(function() {
     return knex('comments');
   })
   .then(function(commentData) {
-    console.log(commentData);
     return commentData.forEach(function(el, ind, arr) {
       for (i = 0; i < data.length; i++) {
         if (data[i].id === el.post_id) {
@@ -36,7 +34,6 @@ router.get('/getData/posts', function(req, res, next) {
 });
 
 router.post('/addData/posts', function(req, res, next) {
-  console.log(req.body);
   return knex('posts').insert({
     title: req.body.title,
     author: req.body.author,
@@ -50,6 +47,21 @@ router.post('/addData/posts', function(req, res, next) {
     .then(function(data) {
       console.log(data);
     });
+});
+
+router.post('/addData/comments', function(req, res, next) {
+  console.log(req.body);
+  return knex('comments').insert({
+    comm_author: req.body.comm_author,
+    text: req.body.text,
+    post_id: req.body.post_id
+  }, 'post_id')
+  .catch(function(err) {
+    console.log(err);
+  })
+  .then(function(data) {
+    res.status(200).send('comment added!');
+  });
 });
 
 router.post('/upvote/:id', function(req, res, next) {

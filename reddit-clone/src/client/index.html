@@ -55,7 +55,7 @@
     </section>
 
     <main ng-controller='postControl'>
-      <article class='post-div' ng-repeat='post in posts'>
+      <article class='post-div' ng-repeat='post in posts' ng-controller='commControl'>
         <div class='image-col'>
           <img class='post-img' ng-src='{{post.image}}'>
         </div>
@@ -75,21 +75,25 @@
           <div class='row'>
             <i class='fa fa-calendar'></i>
             <p class='date'>{{post.date | date}}</p>
-            <i class='fa fa-comments'></i>
-            <p class='comments'></p>
+            <i class='fa fa-comments' ng-click='hideAndShowComms()'></i>
+            <p class='comments'  ng-click='hideAndShowComms()'>{{commentInt}} Comments</p>
             <i class='fa fa-pencil'></i>
-            <p class='add-comment'>Add Comment</p>
+            <p class='add-comment' ng-click='hideAndShowCommForm()'>Add Comment</p>
           </div>
+          <section class='row'>
+            <form ng-hide='hideCommForm' class='add-comment'>
+              <label for='comm_author'>Author</label>
+              <input type='text' name='comm_author' placeholder='Dave Smith'>
+              <label for='text'>Text</label>
+              <input type='text' name='text' placeholder='comment text'>
+              <button>Add Comment</button>
+            </form>
+          </section>
+          <section ng-hide='hideComms' class='comment-box' ng-repeat='comment in post.comments'>
+            <p><em>By: {{comment.comm_author}}</em></p>
+            <p>{{comment.text}}</p>
+          <section>
         </div>
-        <section class='comment-box' ng-repeat='comment in comments'>
-        <section>
-        <form class='add-comment'>
-          <label for='comm_author'>Author</label>
-          <input type='text' name='comm_author' placeholder='Dave Smith'>
-          <label for='text'>Text</label>
-          <input type='text' name='text' placeholder='comment text'>
-          <button>Add Comment</button>
-        </form>
       </article>
     </main>
 

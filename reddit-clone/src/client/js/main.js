@@ -7,6 +7,7 @@ app.factory('dbCalls', function($http) {
   postClass.get = function() {
     return $http.get("/getData/posts");
   };
+
   postClass.add = function(formData) {
     return $http({
       url: '/addData/posts',
@@ -14,6 +15,7 @@ app.factory('dbCalls', function($http) {
       data: formData
     });
   };
+
   postClass.changeVote = function(id, vote) {
     var body = {
       vote: vote
@@ -24,6 +26,7 @@ app.factory('dbCalls', function($http) {
       data: body
     });
   };
+
   return postClass;
 });
 
@@ -50,11 +53,8 @@ app.controller('formControl', function($scope, dbCalls) {
     $scope.hideAndShowForm();
     dbCalls.add($scope.formData)
     .then(function(data) {
-      console.log(data);
-      console.log('into get function');
       postClass.get()
       .then(function(results) {
-        console.log(results);
         $scope.posts = results.data;
         $scope.formData = {};
       });
@@ -62,11 +62,26 @@ app.controller('formControl', function($scope, dbCalls) {
   };
 });
 
+app.controller('commControl', function($scope, dbCalls) {
+  $scope.hideCommForm = true;
+  $scope.hideComms = true;
+
+  $scope.hideAndShowCommForm = function() {
+    $scope.hideCommForm = !$scope.hideCommForm;
+  };
+
+  $scope.hideAndShowComms = function() {
+    $scope.hideComms = !$scope.hideComms;
+  };
+
+});
+
 
 //show posts on page
 app.controller('postControl', function($scope, dbCalls) {
   dbCalls.get()
   .then(function(results) {
+    console.log(results);
     $scope.posts = results.data;
   });
 

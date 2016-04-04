@@ -8,22 +8,30 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/getData/posts', function(req, res, next) {
+  var data;
   return knex('posts')
-  .then(function(data) {
-    res.status(200).send(data);
-  })
   .catch(function(err) {
     res.status(500).send(err);
-  });
-});
-
-router.get('/getData/comments', function(req, res, next) {
-  return knex('comments')
-  .then(function(data) {
-    res.status(200).send(data);
   })
-  .catch(function(err) {
-    res.status(500).send(err);
+  .then(function(postData) {
+    data = postData;
+    console.log(data);
+  })
+  .then(function() {
+    return knex('comments');
+  })
+  .then(function(commentData) {
+    console.log(commentData);
+    return commentData.forEach(function(el, ind, arr) {
+      for (i = 0; i < data.length; i++) {
+        if (data[i].id === el.post_id) {
+          data[i].comments.push(el);
+        }
+      }
+    });
+  })
+  .then(function() {
+    res.status(200).send(data);
   });
 });
 
@@ -45,7 +53,6 @@ router.post('/addData/posts', function(req, res, next) {
 });
 
 router.post('/upvote/:id', function(req, res, next) {
-  console.log(req.body);
   var post = req.params.id;
   return knex('posts').update('upvote', req.body.vote)
   .where('id', post)

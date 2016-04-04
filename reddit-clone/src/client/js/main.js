@@ -68,11 +68,15 @@ app.controller('commControl', function($scope, dbCalls) {
 
   $scope.hideAndShowCommForm = function() {
     $scope.hideCommForm = !$scope.hideCommForm;
+    $scope.hideComms = true;
   };
 
   $scope.hideAndShowComms = function() {
     $scope.hideComms = !$scope.hideComms;
+    $scope.hideCommForm = true;
   };
+
+
 
 });
 

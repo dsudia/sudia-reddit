@@ -1,5 +1,5 @@
 // Angular app
-var app = angular.module('redditClone', []);
+var app = angular.module('redditClone', ['relativeDate', 'ngAnimate']);
 
 // get posts from database
 app.factory('dbCalls', function($http) {
@@ -49,6 +49,7 @@ app.controller('formControl', function($scope, dbCalls) {
 
   $scope.sort = 'upvote';
   $scope.reverse = true;
+  $scope.posthideStatus = false;
 
   $scope.sortTitle = function() {
     $scope.sort = 'title';
@@ -116,6 +117,8 @@ app.controller('commControl', function($scope, dbCalls) {
       });
     });
   };
+
+  $scope.search = '';
 
 });
 

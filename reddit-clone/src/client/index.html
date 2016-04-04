@@ -32,7 +32,7 @@
         <div class="navigation-tools">
           <div class="search-bar">
             <form role="search">
-              <input id='postSearch' type="search" placeholder="Enter Search" />
+              <input id='postSearch' ng-model='search' type="search" placeholder="Enter Search" />
             </form>
           </div>
         </div>
@@ -55,7 +55,7 @@
     </section>
 
     <main ng-controller='postControl'>
-      <article class='post-div' ng-repeat='post in posts | orderBy: sort : reverse' ng-controller='commControl'>
+      <article class='post-div' ng-repeat='post in posts | orderBy: sort : reverse | filter: search : false' ng-controller='commControl'>
         <div class='image-col'>
           <img class='post-img' ng-src='{{post.image}}'>
         </div>
@@ -74,14 +74,14 @@
           </div>
           <div class='row'>
             <i class='fa fa-calendar'></i>
-            <p class='date'>{{post.date | date}}</p>
+            <date class='date'>{{post.date | relativeDate}}</date>
             <i class='fa fa-comments' ng-click='hideAndShowComms()'></i>
             <p class='comments'  ng-click='hideAndShowComms()'><ng-pluralize count='{{post.comments.length}}' when='{"1": "1 comment", "other": "{} comments"}'</ng-pluralize></p>
             <i class='fa fa-pencil'></i>
             <p class='add-comment' ng-click='hideAndShowCommForm()'>Add Comment</p>
           </div>
           <section class='row'>
-            <form ng-hide='hideCommForm' class='add-comment' ng-submit='addComm(post)'>
+            <form ng-hide='hideCommForm' ng-show='!hideCommForm' class='add-comment' ng-submit='addComm(post)'>
               <label for='comm_author'>Author</label>
               <input type='text' ng-model='commData.comm_author' name='comm_author' placeholder='Dave Smith'>
               <label for='text'>Text</label>
@@ -89,7 +89,7 @@
               <button type='submit'>Add Comment</button>
             </form>
           </section>
-          <section ng-hide='hideComms' class='comment-box' ng-repeat='comment in post.comments'>
+          <section ng-hide='hideComms' ng-show='!hideComms' class='comment-box' ng-repeat='comment in post.comments'>
             <p><em>By: {{comment.comm_author}}</em></p>
             <p>{{comment.text}}</p>
           <section>
@@ -97,7 +97,11 @@
       </article>
     </main>
 
+
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.10/angular.min.js'</script>
+    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/angular-route.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
+    <script type='text/javascript' src="js/angular-relative-date.min.js"></script>
     <script type='text/javascript' src="bower_components/angular/angular.min.js"></script>
     <script type='text/javascript' src="bower_components/angular-mocks/angular-mocks.js"></script>
     <script type='text/javascript' src='js/main.js'></script>

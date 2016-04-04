@@ -25,6 +25,22 @@ $base-background-color: gainsboro !default;
   color: red;
 }
 
+.ng-hide-add {
+  animation: fadeOut .5s;
+}
+
+.ng-hide-remove {
+  animation: fadeIn .5s;
+}
+
+.ng-enter {
+  animation: fadeIn .5s;
+}
+
+.ng-leave {
+  animation: fadeOut .5s;
+}
+
 .post-div {
   @include outer-container;
   background-color: $base-background-color;

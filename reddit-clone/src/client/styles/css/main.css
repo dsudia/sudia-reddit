@@ -272,6 +272,18 @@ picture {
 .negative-vote {
   color: red; }
 
+.ng-hide-add {
+  animation: fadeOut .5s; }
+
+.ng-hide-remove {
+  animation: fadeIn .5s; }
+
+.ng-enter {
+  animation: fadeIn .5s; }
+
+.ng-leave {
+  animation: fadeOut .5s; }
+
 .post-div {
   max-width: 1200px;
   margin-left: auto;

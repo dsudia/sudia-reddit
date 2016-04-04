@@ -20,11 +20,11 @@
           <ul id="js-navigation-menu" class="navigation-menu show">
             <li class="nav-link"><a href="javascript:void(0)">reddit Clone</a></li>
             <li class="nav-link"><a id='submitPost' href="javascript:void(0)" ng-click='hideAndShowForm()'>+ Submit Post</a></li>
-            <li class="nav-link more"><a href="javascript:void(0)">Sort Posts</a>
+            <li id='sort-menu' class="nav-link more"><a href="javascript:void(0)">Sort Posts</a>
               <ul class="submenu">
-                <li><a href="javascript:void(0)" ng-click='sortUpvote()'>Upvotes</a></li>
-                <li><a href="javascript:void(0)" ng-click='sortDate()'>Date</a></li>
-                <li><a href="javascript:void(0)" ng-click='sortTitle()'>Title</a></li>
+                <li><a id='sort-up-vote' href="javascript:void(0)" ng-click='sortUpvote()'>Upvotes</a></li>
+                <li><a id='sort-date' href="javascript:void(0)" ng-click='sortDate()'>Date</a></li>
+                <li><a id='sort-title' href="javascript:void(0)" ng-click='sortTitle()'>Title</a></li>
               </ul>
             </li>
           </ul>

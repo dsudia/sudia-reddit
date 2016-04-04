@@ -1,28 +1,37 @@
-describe('TestOneController', function () {
+describe('Posts display correctly', function () {
 
-  var postSection = element.all(by.css('.post-div'));
+  var sortButton = element(by.css('#sort-menu'));
 
   beforeEach(function() {
     browser.get('http://localhost:3000/');
   });
 
   it('should show all posts', function () {
+    var postSection = element.all(by.css('.post-div'));
     expect(postSection.count()).toEqual(3);
     expect(postSection.get(0).getText()).toContain('Yosemite');
     expect(postSection.get(1).getText()).toContain('Aspens');
     expect(postSection.get(2).getText()).toContain('Yellowstone');
   });
 
-  xit('clicking the button changes the greeting if text is inputed', function () {
-    textInputBox.sendKeys('Hi!');
-    changeGreetingButton.click();
-    expect(greeting.getText()).toEqual('Hi!');
+  it('clicking the sort by date button sorts by date', function () {
+    sortButton.click();
+    var sortByDateButton = element(by.id('sort-date'));
+    sortByDateButton.click();
+    var postSection = element.all(by.css('.post-div'));
+    expect(postSection.get(0).getText()).toContain('Aspens');
+    expect(postSection.get(1).getText()).toContain('Yosemite');
+    expect(postSection.get(2).getText()).toContain('Yellowstone');
   });
 
-  xit('clicking the button does not change the greeting if text is not inputed', function () {
-    textInputBox.sendKeys('');
-    changeGreetingButton.click();
-    expect(greeting.getText()).toEqual('Hello, World!');
+  it('clicking the sort by title button sorts by title', function () {
+    sortButton.click();
+    var sortByTitleButton = element(by.id('sort-title'));
+    sortByTitleButton.click();
+    var postSection = element.all(by.css('.post-div'));
+    expect(postSection.get(0).getText()).toContain('Aspens');
+    expect(postSection.get(1).getText()).toContain('Yellowstone');
+    expect(postSection.get(2).getText()).toContain('Yosemite');
   });
 
 });

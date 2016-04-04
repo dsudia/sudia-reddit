@@ -17,8 +17,12 @@ $base-background-color: gainsboro !default;
   @include span-columns(10);
 }
 
-.image-col {
+.positive-vote {
+  color: green;
+}
 
+.negative-vote {
+  color: red;
 }
 
 .post-div {

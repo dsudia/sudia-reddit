@@ -266,6 +266,12 @@ picture {
   .add-post:last-child {
     margin-right: 0; }
 
+.positive-vote {
+  color: green; }
+
+.negative-vote {
+  color: red; }
+
 .post-div {
   max-width: 1200px;
   margin-left: auto;

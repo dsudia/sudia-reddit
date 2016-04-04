@@ -59,12 +59,12 @@
         <div class='image-col'>
           <img class='post-img' ng-src='{{post.image}}'>
         </div>
-        <div class='body-col'>
+        <div class='body-col' id='{{post.id}}'>
           <div class='row'>
             <h3>{{post.title}}</h3>
-            <i class='fa fa-arrow-circle-up'></i>
-            <i class='fa fa-arrow-circle-down'></i>
-            {{post.upvote}}
+            <i class='fa fa-arrow-circle-up positive-vote' ng-click='upVote(post)'></i>
+            <i class='fa fa-arrow-circle-down negative-vote' ng-click='downVote(post)'></i>
+            <span ng-class='{"positive-vote": (post.upvote > 0), "negative-vote": (post.upvote < 0)}'>{{post.upvote}}</span>
           </div>
           <div class='row'>
             <p>By {{post.author}} </p>

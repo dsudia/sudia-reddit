@@ -8,16 +8,24 @@ app.factory('dbCalls', function($http) {
     return $http.get("/getData/posts");
   };
   postClass.add = function(formData) {
-    console.log(formData);
     return $http({
       url: '/addData/posts',
       method: 'POST',
       data: formData
     });
   };
+  postClass.changeVote = function(id, vote) {
+    var body = {
+      vote: vote
+    };
+    return $http({
+      url: '/upvote/' + id,
+      method: 'POST',
+      data: body
+    });
+  };
   return postClass;
 });
-
 
 
 
@@ -61,4 +69,14 @@ app.controller('postControl', function($scope, dbCalls) {
   .then(function(results) {
     $scope.posts = results.data;
   });
+
+  $scope.upVote = function(post) {
+    post.upvote ++;
+    dbCalls.changeVote(post.id, post.upvote);
+  };
+
+  $scope.downVote = function(post) {
+    post.upvote --;
+    dbCalls.changeVote(post.id, post.upvote);
+  };
 });

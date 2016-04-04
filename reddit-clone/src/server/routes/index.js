@@ -44,4 +44,14 @@ router.post('/addData/posts', function(req, res, next) {
     });
 });
 
+router.post('/upvote/:id', function(req, res, next) {
+  console.log(req.body);
+  var post = req.params.id;
+  return knex('posts').update('upvote', req.body.vote)
+  .where('id', post)
+  .catch(function(err) {
+    console.log(err);
+  });
+});
+
 module.exports = router;

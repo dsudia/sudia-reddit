@@ -28,14 +28,20 @@ router.get('/getData/comments', function(req, res, next) {
 });
 
 router.post('/addData/posts', function(req, res, next) {
-  var postDate = new Date();
+  console.log(req.body);
   return knex('posts').insert({
     title: req.body.title,
     author: req.body.author,
     image: req.body.image,
     description: req.body.description,
     upvote: 0,
-    date: postDate});
+    date: req.body.date}, 'id')
+    .catch(function(err) {
+      console.log(err);
+    })
+    .then(function(data) {
+      console.log(data);
+    });
 });
 
 module.exports = router;

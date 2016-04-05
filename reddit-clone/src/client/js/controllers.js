@@ -1,7 +1,7 @@
 // Show and hide new post form
 app.controller('formControl', function($scope, dbCalls) {
   $scope.formHideStatus = true;
-  $scope.hideAndShowForm = function() {
+  var hideAndShowForm = function() {
     $scope.formHideStatus = !$scope.formHideStatus;
   };
 
@@ -25,20 +25,14 @@ app.controller('formControl', function($scope, dbCalls) {
   };
 
   $scope.formData = {};
-  // set today's date as new post date
-  Date.prototype.toDateInputValue = (function() {
-      var local = new Date(this);
-      local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-      return local.toJSON().slice(0,10);
-  });
-  var dateField = document.getElementById('date-picker');
+
 
   $scope.formData.date = new Date();
-  $scope.addPost = function() {
+  var addPost = function() {
     $scope.hideAndShowForm();
     dbCalls.add($scope.formData)
     .then(function(data) {
-      return postClass.get()
+      return dbCalls.get()
       .then(function(results) {
         $scope.posts = results.data;
         $scope.formData = {};
@@ -51,18 +45,18 @@ app.controller('commControl', function($scope, dbCalls) {
   $scope.hideCommForm = true;
   $scope.hideComms = true;
 
-  $scope.hideAndShowCommForm = function() {
+  var hideAndShowCommForm = function() {
     $scope.hideCommForm = !$scope.hideCommForm;
     $scope.hideComms = true;
   };
 
-  $scope.hideAndShowComms = function() {
+  var hideAndShowComms = function() {
     $scope.hideComms = !$scope.hideComms;
     $scope.hideCommForm = true;
   };
 
   $scope.commData = {};
-  $scope.addComm = function(post) {
+  var addComm = function(post) {
     $scope.commData.post_id = post.id;
     return dbCalls.addComment($scope.commData)
     .then(function() {

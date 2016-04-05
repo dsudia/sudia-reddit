@@ -81,7 +81,6 @@ gulp.task('unit', function (done) {
 });
 
 gulp.task('e2e', function(done) {
-  var args = ['--baseUrl', 'http://127.0.0.1:4444'];
   gulp.src(["./test/e2e/*.js"])
     .pipe(protractor({
       configFile: "test/protractor.conf.js",

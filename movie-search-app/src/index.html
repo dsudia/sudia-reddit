@@ -9,7 +9,21 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
   <body>
-    <h1 class='hero-text'>Angular OMDb API Search</h1>
+    <h1 class='centered-text'>Angular OMDb API Search</h1>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-sm-4 cennter-block col-sm-offset-4'>
+          <form class='centered'>
+            <div class='form-group'>
+              <label for='search'><h3>Enter a movie by title</h3></label>
+              <br>
+              <input type='text' name='search' placeholder='e.g. The Hudsucker Proxy' ng-model='searchText'>
+            </div>
+            <input type='submit' ng-submit='searchOMDb' value='Search!' class='btn btn-lg btn-success'>
+          </form>
+        </div>
+      </div>
+    </div>
     <hr>
     <!-- sample angular code -->
     <div class="container">

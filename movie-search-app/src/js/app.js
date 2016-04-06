@@ -1,7 +1,13 @@
-// sample angular code
+var app = angular.module('myApp', ['ngRoute']);
 
-var app = angular.module('myApp', []);
-
-app.controller('myController', ['$scope', function($scope) {
-  $scope.greeting = "Hello World!";
-}]);
+app.config(function($routeProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'src/partials/movieList.html',
+      controller: 'movieListControl'
+    })
+    .when('/*', {
+      templateUrl: 'partials/movie.html',
+      controller: 'movieControl'
+    });
+});

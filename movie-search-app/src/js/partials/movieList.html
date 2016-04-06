@@ -1,6 +1,6 @@
 <div class="container">
   <section class='movie-div' ng-repeat='movie in movies'>
-    <a href='/movie/{{movie.Title}}'><p>{{movie.Title}}</p></a>
+    <a href='/movie?movie={{movie.Title}}'><p>{{movie.Title}}</p></a>
     <p>year: {{movie.Year}}</p>
   </section>
 </div>

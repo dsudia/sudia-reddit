@@ -5,12 +5,12 @@
     <title>Untitled</title>
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <base href='/'>
   </head>
   <body ng-controller='searchControl'>
     <header>
-      <h1 class='centered-text'>Angular OMDb API Search</h1>
+      <h1 class='centered-text'><a href='/'>Angular OMDb API Search</h1></a>
       <div class='container'>
         <div class='row'>
           <div class='col-sm-4 cennter-block col-sm-offset-4'>
@@ -19,7 +19,7 @@
               <br>
               <input type='text' name='search' placeholder='e.g. The Hudsucker Proxy' ng-model='searchText'>
             </div>
-            <button ng-click='searchOMDb()' class='btn btn-lg btn-success'>Search</button>
+            <a href='/'><button ng-click='searchOMDb()' class='btn btn-lg btn-success'>Search</button></a>
           </div>
         </div>
       </div>

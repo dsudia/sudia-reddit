@@ -3,10 +3,10 @@ var app = angular.module('myApp', ['ngRoute']);
 app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'src/partials/movieList.html',
+      templateUrl: '/partials/movieList.html',
       controller: 'movieListControl'
     })
-    .when('/*', {
+    .when('/movie', {
       templateUrl: 'partials/movie.html',
       controller: 'movieControl'
     });

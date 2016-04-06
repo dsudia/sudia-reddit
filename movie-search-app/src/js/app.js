@@ -6,7 +6,7 @@ app.config(function($routeProvider) {
       templateUrl: '/partials/movieList.html',
       controller: 'movieListControl'
     })
-    .when('/movie', {
+    .when('/?movie=*', {
       templateUrl: 'partials/movie.html',
       controller: 'movieControl'
     });

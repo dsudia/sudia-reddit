@@ -1,19 +1,25 @@
 <section>
   <table>
-    <tr>
-      <th>Tea</th>
-      <th>Information
-        <label ng-model="priceSort" for="sort-price">Sort By Price:</label><select id="sort-price">
-          <option selected value=""></option>
-          <option onselect="sortPriceLow()" value="lowest">Lowest</option>
-          <option onselect="sortPriceHigh()" value="highest">Highest</option>
-        </select></th>
-    </tr>
+    <thead>
+      <tr>
+        <th>Tea</th>
+        <th>Information
+          <label ng-model="priceSort" for="sort-price">Sort By Price:</label><select id="sort-price">
+            <option selected value=""></option>
+            <option onselect="sortPriceLow()" value="lowest">Lowest</option>
+            <option onselect="sortPriceHigh()" value="highest">Highest</option>
+          </select></th>
+      </tr>
+    </thead>
     <tbody>
-    <tr ng-repeat="tea in teas | orderBy : sort : reverse | filter : search : strict">
-
-
-    </tr>
+      <tr ng-repeat="tea in teas | orderBy : sort : reverse | filter : search : strict">
+        <td>
+          <tea-img tea="tea"></tea-img>
+        </td>
+        <td>
+          <indiv-tea tea="tea"></indiv-tea>
+        </td>
+      </tr>
     </tbody>
   </table>
 </section>

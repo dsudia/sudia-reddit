@@ -1,7 +1,5 @@
 app.controller('showTea', ['$scope', 'meanTeaData', 'getCategories', function($scope, meanTeaData, getCategories) {
   $scope.teas = meanTeaData;
-  $scope.search = '';
-  $scope.catSearch = '';
   $scope.categories = getCategories.getEm();
   $scope.reverse = false;
   $scope.sort = 'name';

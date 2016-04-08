@@ -1,3 +1,11 @@
-/**
- * Created by davidsudia on 4/8/16.
- */
+app.filter('centsToDollars', function() {
+  return function(input) {
+    return input/100;
+  };
+});
+
+app.filter('bool', function() {
+  return function(input) {
+    return (input) ? 'Yes' : 'No';
+  };
+});

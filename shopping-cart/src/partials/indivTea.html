@@ -1,10 +1,10 @@
 
 <h2>{{ tea.name }}</h2>
 <button class="btn btn-sm btn-warning">Add To Bag</button>
-<p><strong>Price</strong>: {{tea.price}}</p>
+<p><strong>Price</strong>: {{tea.price | centsToDollars | currency}}</p>
 <p><strong>Caffeine Scale</strong>: {{tea.caffeineScale}}</p>
 <p><strong>Rating</strong>: {{tea.rating}}</p>
-<p><strong>In Stock?</strong>: {{tea.inStock}}</p>
+<p><strong>In Stock?</strong> {{tea.inStock | bool}}</p>
 <p><strong>Categories:</strong></p>
 <ul ng-repeat="category in tea.categories">
   <li>{{category}}</li>

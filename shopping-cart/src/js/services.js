@@ -124,3 +124,23 @@ app.service('meanTeaData', function() {
 
   return meanTeaData;
 });
+
+app.service('getCategories', ['meanTeaData', function(meanTeaData) {
+  var catClass = {};
+  catClass.getEm = function() {
+    var allCategories = [];
+    meanTeaData.forEach(function(el) {
+      allCategories.push(el.categories);
+    });
+    var allCategories = [].concat.apply([], allCategories);
+    var categories = [];
+    allCategories.forEach(function(el, ind, arr) {
+      if(categories.indexOf(el) === -1) {
+        categories.push(el);
+      }
+    });
+    return categories;
+  };
+
+  return catClass;
+}]);

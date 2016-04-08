@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+  <head>
+    <meta charset="utf-8">
+    <title>Untitled</title>
+    
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+  </head>
+  <body>
+    <h1>Welcome to MEAN Tea!</h1>
+    <nav class="nav">
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+      <section  ng-controller="showTea">
+        <section>
+          <label for="cat-search">Search by category:</label>
+          <select id="cat-search">
+          </select>
+          <label for="name-search">Search by name:</label>
+          <input type="text" ng-model="search" id="name-search">
+          <button class="btn btn-lg btn-danger">Checkout | Bag: Empty!</button>
+        </section>
+
+      <section>
+        <table>
+          <tr>
+            <th>Tea</th>
+            <th>Information
+            <label for="sort-price">Sort By Price:</label><select id="sort-price">
+                <option>Lowest</option>
+                <option>Highest</option>
+              </select></th>
+          </tr>
+          <tbody>
+          <tr ng-repeat="tea in teas | orderBy : sort : reverse | filter: search">
+            <td>
+              <img ng-src="{{ tea.imageUrl }}" />
+            </td>
+            <td>
+              <h2>{{ tea.name }}</h2>
+              <button class="btn btn-sm btn-warning">Add To Bag</button>
+              <p><strong>Price</strong>: {{tea.price}}</p>
+              <p><strong>Caffeine Scale</strong>: {{tea.caffeineScale}}</p>
+              <p><strong>Rating</strong>: {{tea.rating}}</p>
+              <p><strong>In Stock?</strong>: {{tea.inStock}}</p>
+              <p><strong>Categories:</strong></p>
+              <ul ng-repeat="category in tea.categories">
+                <li>{{category}}</li>
+              </ul>
+            <span class="pull-right">
+              <label for="quantity">Quantity</label>
+              <select id="quantity" ng-model="quantity" name="quantity">
+                <option ng-repeat="num in [2,3,4,5,6,7,8,9]">
+                  {{ num }}
+                </option>
+              </select>
+            </span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/filters.js"></script>
+    <script type="text/javascript" src="js/services.js"></script>
+    <script type="text/javascript" src="js/directives.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+  </body>
+</html>

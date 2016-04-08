@@ -1,0 +1,19 @@
+
+<h2>{{ tea.name }}</h2>
+<button class="btn btn-sm btn-warning">Add To Bag</button>
+<p><strong>Price</strong>: {{tea.price}}</p>
+<p><strong>Caffeine Scale</strong>: {{tea.caffeineScale}}</p>
+<p><strong>Rating</strong>: {{tea.rating}}</p>
+<p><strong>In Stock?</strong>: {{tea.inStock}}</p>
+<p><strong>Categories:</strong></p>
+<ul ng-repeat="category in tea.categories">
+  <li>{{category}}</li>
+</ul>
+          <span class="pull-right">
+            <label for="quantity">Quantity</label>
+            <select id="quantity" ng-model="quantity" name="quantity">
+              <option ng-repeat="num in [2,3,4,5,6,7,8,9]">
+                {{ num }}
+              </option>
+            </select>
+          </span>

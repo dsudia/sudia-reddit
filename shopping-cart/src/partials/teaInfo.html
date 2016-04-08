@@ -1,29 +1,19 @@
-<tr>
-  <td>
-    <img ng-src="{{tea.imageUrl}}">
-  </td>
-  <td>
-    <h2>{{tea.name}}</h2>
-    <span>Quantity:</span>
-    <select>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-      <option>9</option>
-    </select>
-    <button class="btn btn-sm btn-warning">Add To Bag</button>
-    <p><strong>Price</strong>: {{tea.price}}</p>
-    <p><strong>Caffeine Scale</strong>: {{tea.caffeineScale}}</p>
-    <p><strong>Rating</strong>: {{tea.rating}}</p>
-    <p><strong>In Stock?</strong>: {{tea.inStock}}</p>
-    <p><strong>Categories:</strong></p>
-    <ul ng-repeat="category in {{tea.categories}}">
-      <li>{{category}}</li>
-    </ul>
-  </td>
-</tr>
+<section>
+  <table>
+    <tr>
+      <th>Tea</th>
+      <th>Information
+        <label ng-model="priceSort" for="sort-price">Sort By Price:</label><select id="sort-price">
+          <option selected value=""></option>
+          <option onselect="sortPriceLow()" value="lowest">Lowest</option>
+          <option onselect="sortPriceHigh()" value="highest">Highest</option>
+        </select></th>
+    </tr>
+    <tbody>
+    <tr ng-repeat="tea in teas | orderBy : sort : reverse | filter : search : strict">
+
+
+    </tr>
+    </tbody>
+  </table>
+</section>

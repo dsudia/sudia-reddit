@@ -1,0 +1,10 @@
+<section>
+  <label for="cat-search">Search by category:</label>
+  <select id="cat-search" ng-model="search.categories">
+    <option selected value=""></option>
+    <option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
+  </select>
+  <label for="name-search">Search by name:</label>
+  <input type="text" ng-model="search.name" id="name-search">
+  <button class="btn btn-md btn-danger">Checkout | Bag: Empty!</button>
+</section>

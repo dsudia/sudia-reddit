@@ -151,7 +151,11 @@ app.service('shoppingCart', ['meanTeaData', function(meanTeaData) {
   cartClass.bag = [];
 
   cartClass.addToBag = function(item, quantity) {
-    cartClass.bag.push({item: item, quantity: quantity});
+    if (quantity === undefined) {
+      cartClass.bag.push({item: item, quantity: 1});
+    } else {
+      cartClass.bag.push({item: item, quantity: quantity});
+    }
   };
 
   return cartClass;

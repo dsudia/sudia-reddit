@@ -36,7 +36,7 @@ app.directive('searchDir', ['getCategories', 'shoppingCart', function(getCategor
     templateUrl: 'partials/search.html',
     controller: function($scope) {
       $scope.categories = getCategories.getEm();
-      $scope.bagQuant = shoppingCart.bag.length;
+      $scope.cart = shoppingCart;
     }
   };
 }]);

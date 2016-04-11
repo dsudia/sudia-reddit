@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="tea in teas | orderBy : price : false | filter : search : strict">
+      <tr ng-repeat="tea in teas | orderBy : sort : false | filter : search : strict">
         <td>
           <tea-img tea="tea"></tea-img>
         </td>

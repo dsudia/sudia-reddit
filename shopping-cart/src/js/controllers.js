@@ -4,7 +4,7 @@ app.controller('showTea', ['$scope', 'meanTeaData', 'getCategories', function($s
   $scope.catSearch = '';
   $scope.categories = getCategories.getEm();
   $scope.reverse = false;
-  $scope.sort = 'name'
+  $scope.sort = 'name';
   $scope.sortPrice = function() {
     console.log('is this fucking working?');
     $scope.sort = 'price';

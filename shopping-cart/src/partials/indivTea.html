@@ -1,6 +1,6 @@
 
 <h2>{{ tea.name }}</h2>
-<button class="btn btn-sm btn-warning">Add To Bag</button>
+<button ng-click="addItem(tea, quantity)" class="btn btn-sm btn-warning">Add To Bag</button>
 <p><strong>Price</strong>: {{tea.price | centsToDollars | currency}}</p>
 <p><strong>Caffeine Scale</strong>: {{tea.caffeineScale}}</p>
 <p><strong>Rating</strong>: {{tea.rating}}</p>

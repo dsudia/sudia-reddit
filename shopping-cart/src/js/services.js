@@ -120,7 +120,7 @@ app.service('meanTeaData', function() {
       "__v": 0,
       "categories": ["spring", "warm","winter"]
     }
-  ]
+  ];
 
   return meanTeaData;
 });
@@ -132,9 +132,9 @@ app.service('getCategories', ['meanTeaData', function(meanTeaData) {
     meanTeaData.forEach(function(el) {
       allCategories.push(el.categories);
     });
-    var allCategories = [].concat.apply([], allCategories);
+    allCategories = [].concat.apply([], allCategories);
     var categories = [];
-    allCategories.forEach(function(el, ind, arr) {
+    allCategories.forEach(function(el) {
       if(categories.indexOf(el) === -1) {
         categories.push(el);
       }
@@ -145,6 +145,14 @@ app.service('getCategories', ['meanTeaData', function(meanTeaData) {
   return catClass;
 }]);
 
-app.service('shoppingCart', ['meanTeaData', function(meantTeaData) {
-  
+app.service('shoppingCart', ['meanTeaData', function(meanTeaData) {
+  var cartClass = {};
+
+  cartClass.bag = [];
+
+  cartClass.addToBag = function(item, quantity) {
+    cartClass.bag.push({item: item, quantity: quantity});
+  };
+
+  return cartClass;
 }]);

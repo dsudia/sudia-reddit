@@ -144,3 +144,7 @@ app.service('getCategories', ['meanTeaData', function(meanTeaData) {
 
   return catClass;
 }]);
+
+app.service('shoppingCart', ['meanTeaData', function(meantTeaData) {
+  
+}]);

@@ -1,5 +1,5 @@
 // get posts from database
-app.factory('dbCalls', function($http) {
+app.service('dbCalls', function($http) {
   var postClass = {};
   postClass.get = function() {
     return $http.get("/getData/posts");

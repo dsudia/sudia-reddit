@@ -1,7 +1,7 @@
 // Show and hide new post form
 app.controller('formControl', function($scope, dbCalls) {
   $scope.formHideStatus = true;
-  var hideAndShowForm = function() {
+  $scope.hideAndShowForm = function() {
     $scope.formHideStatus = !$scope.formHideStatus;
   };
 
@@ -28,7 +28,7 @@ app.controller('formControl', function($scope, dbCalls) {
 
 
   $scope.formData.date = new Date();
-  var addPost = function() {
+  $scope.addPost = function() {
     $scope.hideAndShowForm();
     dbCalls.add($scope.formData)
     .then(function(data) {

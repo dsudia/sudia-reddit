@@ -17,8 +17,13 @@ module.exports = function(config) {
     files: [
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      "http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js",
+      'src/client/js/angular-relative-date.min.js',
+      'src/client/js/app.js',
+      'src/client/js/controllers.js',
+      'src/client/js/factories.js',
       'src/client/js/main.js',
-      'test/**/spec.js'
+      'test/unit/spec.js'
     ],
 
 

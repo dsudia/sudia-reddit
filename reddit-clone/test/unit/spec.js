@@ -3,6 +3,7 @@ describe('test showForm controller', function () {
   $scope = null;
 
   beforeEach(module('redditClone'));
+
   it('initially has a status of true for hidden items', inject(function ($controller) {
     var scope = {};
     var showForm = $controller('formControl', {
@@ -51,6 +52,7 @@ describe('test displayPosts', function() {
     var showForm = $controller('postControl', {
       $scope: scope
     });
+
     scope.should.have.property('posts');
     scope.posts.should.have.type('array');
   }));
